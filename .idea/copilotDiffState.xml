@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Neural_Networks_Learning_Guide.ipynb">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Neural_Networks_Learning_Guide.ipynb" />
+              <option name="originalContent" value="#%%&#10;" />
+              <option name="updatedContent" value="#%%&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Neural_Networks_Step_by_Step.ipynb">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Neural_Networks_Step_by_Step.ipynb" />
+              <option name="originalContent" value="#%%&#10;# Neural Networks Step by Step&#10;&#10;# Step 1: Introduction to Neural Networks&#10;&#10;# A neural network is a type of machine learning model inspired by the human brain. It is made up of layers of interconnected nodes (neurons), which can learn to recognize patterns in data.&#10;&#10;# Why use neural networks?&#10;# - They can learn complex relationships in data.&#10;# - They are used in image recognition, language translation, and more.&#10;&#10;# Key Terms&#10;# - Neuron: A single unit in the network that processes input.&#10;# - Layer: A group of neurons. Networks have input, hidden, and output layers.&#10;# - Weights: Parameters that adjust as the network learns.&#10;# - Activation Function: Decides if a neuron should be activated.&#10;&#10;# ---&#10;&#10;# Step 2: The Perceptron (the simplest neural network)&#10;# Let's build a perceptron to understand the basics.&#10;&#10;import numpy as np&#10;&#10;# Perceptron function&#10;def perceptron(x, w, b):&#10;    z = np.dot(x, w) + b&#10;    return 1 if z &gt; 0 else 0&#10;&#10;# Example inputs&#10;x = np.array([1, 0])  # Input features&#10;w = np.array([0.5, -0.6])  # Weights&#10;b = 0.1  # Bias&#10;&#10;output = perceptron(x, w, b)&#10;print(f'Perceptron output: {output}')&#10;&#10;# ---&#10;&#10;# Step 3: Building a Simple Neural Network&#10;# Let's build a neural network with one hidden layer.&#10;&#10;def sigmoid(x):&#10;    return 1 / (1 + np.exp(-x))&#10;&#10;# Input&#10;X = np.array([[0,0],[0,1],[1,0],[1,1]])&#10;# Output (XOR problem)&#10;y = np.array([[0],[1],[1],[0]])&#10;&#10;# Initialize weights&#10;np.random.seed(42)&#10;W1 = np.random.randn(2, 2)&#10;B1 = np.zeros((1, 2))&#10;W2 = np.random.randn(2, 1)&#10;B2 = np.zeros((1, 1))&#10;&#10;# Forward pass&#10;def forward(X):&#10;    Z1 = np.dot(X, W1) + B1&#10;    A1 = sigmoid(Z1)&#10;    Z2 = np.dot(A1, W2) + B2&#10;    A2 = sigmoid(Z2)&#10;    return A2&#10;&#10;output = forward(X)&#10;print('Network output:\n', output)&#10;&#10;# ---&#10;&#10;# Step 4: Training a Neural Network&#10;# Training means adjusting weights to minimize error. This is done using backpropagation and a loss function.&#10;&#10;def mse(y_true, y_pred):&#10;    return ((y_true - y_pred) ** 2).mean()&#10;&#10;# Example loss&#10;y_pred = forward(X)&#10;loss = mse(y, y_pred)&#10;print(f'Loss: {loss}')&#10;&#10;# ---&#10;&#10;# Step 5: Using a Framework (Keras)&#10;# Let's use Keras to build a neural network easily.&#10;&#10;import tensorflow as tf&#10;from tensorflow import keras&#10;from tensorflow.keras import layers&#10;&#10;# Build model&#10;# model = keras.Sequential([&#10;#     layers.Dense(4, activation='tanh', input_shape=(2,)),  # Increased hidden units and changed activation&#10;#     layers.Dense(1, activation='sigmoid')&#10;# ])&#10;#&#10;# model.compile(optimizer='adam', loss='binary_crossentropy')  # Changed loss function&#10;# model.fit(X, y, epochs=1000, verbose=0)  # Increased epochs&#10;&#10;# Save the trained model in the recommended Keras format&#10;# model.save('xor_model.keras')&#10;&#10;# print('Predictions:', model.predict(X))&#10;&#10;# Example: Load the model and use it for prediction (no retraining needed)&#10;loaded_model = keras.models.load_model('xor_model.keras')&#10;print('Loaded model predictions:', loaded_model.predict(X))&#10;&#10;#%%&#10;" />
+              <option name="updatedContent" value="#%%&#10;# Neural Networks Step by Step&#10;&#10;# Step 1: Introduction to Neural Networks&#10;&#10;# A neural network is a type of machine learning model inspired by the human brain. It is made up of layers of interconnected nodes (neurons), which can learn to recognize patterns in data.&#10;&#10;# Why use neural networks?&#10;# - They can learn complex relationships in data.&#10;# - They are used in image recognition, language translation, and more.&#10;&#10;# Key Terms&#10;# - Neuron: A single unit in the network that processes input.&#10;# - Layer: A group of neurons. Networks have input, hidden, and output layers.&#10;# - Weights: Parameters that adjust as the network learns.&#10;# - Activation Function: Decides if a neuron should be activated.&#10;&#10;# ---&#10;&#10;# Step 2: The Perceptron (the simplest neural network)&#10;# Let's build a perceptron to understand the basics.&#10;&#10;import numpy as np&#10;&#10;# Perceptron function&#10;def perceptron(x, w, b):&#10;    z = np.dot(x, w) + b&#10;    return 1 if z &gt; 0 else 0&#10;&#10;# Example inputs&#10;x = np.array([1, 0])  # Input features&#10;w = np.array([0.5, -0.6])  # Weights&#10;b = 0.1  # Bias&#10;&#10;output = perceptron(x, w, b)&#10;print(f'Perceptron output: {output}')&#10;&#10;# ---&#10;&#10;# Step 3: Building a Simple Neural Network&#10;# Let's build a neural network with one hidden layer.&#10;&#10;def sigmoid(x):&#10;    return 1 / (1 + np.exp(-x))&#10;&#10;# Input&#10;X = np.array([[0,0],[0,1],[1,0],[1,1]])&#10;# Output (XOR problem)&#10;y = np.array([[0],[1],[1],[0]])&#10;&#10;# Initialize weights&#10;np.random.seed(42)&#10;W1 = np.random.randn(2, 2)&#10;B1 = np.zeros((1, 2))&#10;W2 = np.random.randn(2, 1)&#10;B2 = np.zeros((1, 1))&#10;&#10;# Forward pass&#10;def forward(X):&#10;    Z1 = np.dot(X, W1) + B1&#10;    A1 = sigmoid(Z1)&#10;    Z2 = np.dot(A1, W2) + B2&#10;    A2 = sigmoid(Z2)&#10;    return A2&#10;&#10;output = forward(X)&#10;print('Network output:\n', output)&#10;&#10;# ---&#10;&#10;# Step 4: Training a Neural Network&#10;# Training means adjusting weights to minimize error. This is done using backpropagation and a loss function.&#10;&#10;def mse(y_true, y_pred):&#10;    return ((y_true - y_pred) ** 2).mean()&#10;&#10;# Example loss&#10;y_pred = forward(X)&#10;loss = mse(y, y_pred)&#10;print(f'Loss: {loss}')&#10;&#10;# ---&#10;&#10;# Step 5: Using a Framework (Keras)&#10;# Let's use Keras to build a neural network easily.&#10;&#10;# Build and train the model, then save it&#10;import tensorflow as tf&#10;from tensorflow import keras&#10;from tensorflow.keras import layers&#10;&#10;model = keras.Sequential([&#10;    layers.Dense(4, activation='tanh', input_shape=(2,)),&#10;    layers.Dense(1, activation='sigmoid')&#10;])&#10;model.compile(optimizer='adam', loss='binary_crossentropy')&#10;model.fit(X, y, epochs=1000, verbose=0)&#10;model.save('xor_model.keras')&#10;print('Predictions:', model.predict(X))&#10;#%%&#10;# Step 6: Load and use the trained model (no retraining needed)&#10;from tensorflow import keras&#10;loaded_model = keras.models.load_model('xor_model.keras')&#10;print('Loaded model predictions:', loaded_model.predict(X))" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/Neural_Networks_Step_by_Step.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Neural_Networks_Step_by_Step.py" />
+              <option name="updatedContent" value="# Neural Networks Step by Step&#10;&#10;# Step 1: Introduction to Neural Networks&#10;&#10;# A neural network is a type of machine learning model inspired by the human brain. It is made up of layers of interconnected nodes (neurons), which can learn to recognize patterns in data.&#10;&#10;# Why use neural networks?&#10;# - They can learn complex relationships in data.&#10;# - They are used in image recognition, language translation, and more.&#10;&#10;# Key Terms&#10;# - Neuron: A single unit in the network that processes input.&#10;# - Layer: A group of neurons. Networks have input, hidden, and output layers.&#10;# - Weights: Parameters that adjust as the network learns.&#10;# - Activation Function: Decides if a neuron should be activated.&#10;&#10;# ---&#10;&#10;# Step 2: The Perceptron (the simplest neural network)&#10;# Let's build a perceptron to understand the basics.&#10;&#10;import numpy as np&#10;&#10;# Perceptron function&#10;def perceptron(x, w, b):&#10;    z = np.dot(x, w) + b&#10;    return 1 if z &gt; 0 else 0&#10;&#10;# Example inputs&#10;x = np.array([1, 0])  # Input features&#10;w = np.array([0.5, -0.6])  # Weights&#10;b = 0.1  # Bias&#10;&#10;output = perceptron(x, w, b)&#10;print(f'Perceptron output: {output}')&#10;&#10;# ---&#10;&#10;# Step 3: Building a Simple Neural Network&#10;# Let's build a neural network with one hidden layer.&#10;&#10;def sigmoid(x):&#10;    return 1 / (1 + np.exp(-x))&#10;&#10;# Input&#10;X = np.array([[0,0],[0,1],[1,0],[1,1]])&#10;# Output (XOR problem)&#10;y = np.array([[0],[1],[1],[0]])&#10;&#10;# Initialize weights&#10;np.random.seed(42)&#10;W1 = np.random.randn(2, 2)&#10;B1 = np.zeros((1, 2))&#10;W2 = np.random.randn(2, 1)&#10;B2 = np.zeros((1, 1))&#10;&#10;# Forward pass&#10;def forward(X):&#10;    Z1 = np.dot(X, W1) + B1&#10;    A1 = sigmoid(Z1)&#10;    Z2 = np.dot(A1, W2) + B2&#10;    A2 = sigmoid(Z2)&#10;    return A2&#10;&#10;output = forward(X)&#10;print('Network output:\n', output)&#10;&#10;# ---&#10;&#10;# Step 4: Training a Neural Network&#10;# Training means adjusting weights to minimize error. This is done using backpropagation and a loss function.&#10;&#10;def mse(y_true, y_pred):&#10;    return ((y_true - y_pred) ** 2).mean()&#10;&#10;# Example loss&#10;y_pred = forward(X)&#10;loss = mse(y, y_pred)&#10;print(f'Loss: {loss}')&#10;&#10;# ---&#10;&#10;# Step 5: Using a Framework (Keras)&#10;# Let's use Keras to build a neural network easily.&#10;&#10;import tensorflow as tf&#10;from tensorflow import keras&#10;from tensorflow.keras import layers&#10;&#10;# Build model&#10;model = keras.Sequential([&#10;    layers.Dense(2, activation='sigmoid', input_shape=(2,)),&#10;    layers.Dense(1, activation='sigmoid')&#10;])&#10;&#10;model.compile(optimizer='adam', loss='mse')&#10;model.fit(X, y, epochs=100, verbose=0)&#10;&#10;print('Predictions:', model.predict(X))&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/README.md" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/data_generator.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/data_generator.py" />
+              <option name="originalContent" value="&#10;" />
+              <option name="updatedContent" value="&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/requirements.txt">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/requirements.txt" />
+              <option name="originalContent" value="&#10;&#10;" />
+              <option name="updatedContent" value="&#10;&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/simple_explanation.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/simple_explanation.py" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/simple_neural_network.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/simple_neural_network.py" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/train_example.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/train_example.py" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/xor_api/main.py">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/xor_api/main.py" />
+              <option name="originalContent" value="from fastapi import FastAPI, HTTPException, Query&#10;from pydantic import BaseModel, conlist&#10;import numpy as np&#10;from tensorflow import keras&#10;import os&#10;&#10;# Load the trained model once at startup&#10;MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'xor_model.keras')&#10;model = keras.models.load_model(MODEL_PATH)&#10;&#10;app = FastAPI()&#10;&#10;class InputData(BaseModel):&#10;    data: conlist(float, min_items=2, max_items=2)&#10;&#10;@app.get(&quot;/predict&quot;)&#10;def predict(&#10;    x1: float = Query(..., ge=0.0, le=1.0, description=&quot;First input in [0, 1]&quot;),&#10;    x2: float = Query(..., ge=0.0, le=1.0, description=&quot;Second input in [0, 1]&quot;)&#10;):&#10;    x = np.array([[x1, x2]])&#10;    prediction = model.predict(x)&#10;    return {&quot;prediction&quot;: float(prediction[0][0])}&#10;" />
+              <option name="updatedContent" value="from fastapi import FastAPI, HTTPException, Query&#10;import numpy as np&#10;from tensorflow import keras&#10;import os&#10;&#10;# Load the trained model once at startup&#10;MODEL_PATH = os.path.join(os.path.dirname(__file__), '..', 'xor_model.keras')&#10;model = keras.models.load_model(MODEL_PATH)&#10;&#10;app = FastAPI()&#10;&#10;@app.get(&quot;/predict&quot;)&#10;def predict(&#10;    x1: float = Query(..., ge=0.0, le=1.0, description=&quot;First input in [0, 1]&quot;),&#10;    x2: float = Query(..., ge=0.0, le=1.0, description=&quot;Second input in [0, 1]&quot;)&#10;):&#10;    x = np.array([[x1, x2]])&#10;    prediction = model.predict(x)&#10;    return {&quot;prediction&quot;: float(prediction[0][0])}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
