@@ -5,3 +5,4 @@ fastapi
 uvicorn
 matplotlib
 scikit-learn
+imblearn
